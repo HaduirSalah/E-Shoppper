@@ -1,0 +1,58 @@
+<!-- <div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <owl-carousel-o #owlCarousel [options]="customOptions">
+        @for (slide of carouselItems; track slide.id) {
+        <ng-template carouselSlide [id]="slide.id">
+            <div class="carousel-item" [class.active]="currentSlide === carouselItems.indexOf(slide)" style="height: 410px;">
+                <img class="img-fluid" [src]="slide.image" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 700px;">
+                        <h4 class="text-light text-uppercase font-weight-medium mb-3">{{ slide.offer }}</h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ slide.title }}</h3>
+                        <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        }
+    </owl-carousel-o>
+
+    <a class="carousel-control-prev" (click)="prev()" href="javascript:void(0)">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-prev-icon mb-n2"></span>
+        </div>
+    </a>
+    <a class="carousel-control-next" (click)="next()" href="javascript:void(0)">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-next-icon mb-n2"></span>
+        </div>
+    </a>
+</div> -->
+<div id="header-carousel" #carousel class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        @for (slide of slides; track $index) {
+        <div 
+             class="carousel-item" 
+             [class.active]="$index === currentSlide" 
+             style="height: 410px;">
+            <img class="img-fluid" [src]="slide.image" alt="Image">
+            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                <div class="p-3" style="max-width: 700px;">
+                    <h4 class="text-light text-uppercase font-weight-medium mb-3">{{ slide.offer }}</h4>
+                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ slide.title }}</h3>
+                    <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    <a class="carousel-control-prev" (click)="prev()">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-prev-icon mb-n2"></span>
+        </div>
+    </a>
+    <a class="carousel-control-next" (click)="next()">
+        <div class="btn btn-dark" style="width: 45px; height: 45px;">
+            <span class="carousel-control-next-icon mb-n2"></span>
+        </div>
+    </a>
+</div>

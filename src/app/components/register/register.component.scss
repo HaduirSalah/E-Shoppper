@@ -1,9 +1,10 @@
 
-@import '../../../styles.scss';
+@use '../../../styles.scss';
+
+
+// @import ==> @forward or @use
 
 .btn-main {
-    background-color: var(--primary) !important;
-    padding: 10px 20px;
     border-radius: 5px;
   }
 

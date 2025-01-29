@@ -4,6 +4,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BrandsComponent } from './components/brands/brands.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 export const routes: Routes = [
 
@@ -12,6 +14,8 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'home', component: HomeComponent },
     { path: 'products', component: ProductsComponent },
+    { path: 'brands', component: BrandsComponent },
+    { path: 'category', component: CategoriesComponent },
     { path: '**', component: NotFoundComponent },  // wildcard
 
 ];

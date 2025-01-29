@@ -1,0 +1,6 @@
+<p>categories works!</p>
+@for (category of categories$ | async; track $index) {
+<div>
+    <p>{{ category.slug }}</p>
+</div>
+}
