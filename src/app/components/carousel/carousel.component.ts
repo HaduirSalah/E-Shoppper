@@ -16,13 +16,13 @@ export class CarouselComponent implements OnInit {
   slides = [
     { 
       id: '1', 
-      image: 'blog-img-1.jpeg', 
+      image: './images/blog-img-1.jpeg', 
       offer: '10% Off Your First Order', 
       title: 'Best Offers on All Products' 
     },
     { 
       id: '2', 
-      image: 'blog-img-2.jpeg', 
+      image: './images/blog-img-2.jpeg', 
       offer: '10% Off Your First Order', 
       title: 'Reasonable Price'  
     }

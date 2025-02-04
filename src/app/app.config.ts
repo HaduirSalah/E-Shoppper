@@ -6,7 +6,7 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +15,9 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes,withViewTransitions()), // withViewTransitions() --> smooth routes transition 
     provideClientHydration(withEventReplay()),   // Provide hydration features separately
-    provideHttpClient(withFetch())               // Provide HTTP client configuration separately
+    provideHttpClient(withFetch()),               // Provide HTTP client configuration separately
+    provideAnimations() // Add this line instead. provideAnimationsAsync() is not a valid function.
+
   ],
 };
+

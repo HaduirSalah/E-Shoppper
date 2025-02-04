@@ -1,10 +1,10 @@
-<div class="px-xl-5">  
-    <app-carousel></app-carousel> 
+<div class="px-xl-4">
+    <app-carousel></app-carousel>
 </div>
 
 <!-- Featured Start -->
 <div class="container-fluid pt-5">
-    <div class="row px-xl-5 pb-3">
+    <div class="row px-xl-4 pb-3">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                 <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
@@ -35,8 +35,8 @@
 
 
 <!-- Categories Start -->
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5 pb-3">
+<!-- <div class="container-fluid pt-5">
+    <div class="row px-xl-4 pb-3">
         @for (category of categories$ | async; track category._id) {
         <div class="col-lg-4 col-md-6 pb-1">
             <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px; height: 500px;">
@@ -49,15 +49,16 @@
         </div>
         }
     </div>
-</div>
+</div> -->
+<app-categories></app-categories>
 <!-- Categories End -->
 
 <!-- Offer Start -->
 <div class="container-fluid offer pt-5">
-    <div class="row px-xl-5">
+    <div class="row px-xl-4">
         <div class="col-md-6 pb-4">
             <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
-                <img src="offer-1.png" alt="offer-1">
+                <img src="./images/offer-1.png" alt="offer-1">
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Spring Collection</h1>
@@ -67,7 +68,7 @@
         </div>
         <div class="col-md-6 pb-4">
             <div class="position-relative bg-secondary text-center text-md-left text-white mb-2 py-5 px-5">
-                <img src="offer-2.png" alt="offer-2">
+                <img src="./images/offer-2.png" alt="offer-2">
                 <div class="position-relative" style="z-index: 1;">
                     <h5 class="text-uppercase text-primary mb-3">20% off the all order</h5>
                     <h1 class="mb-4 font-weight-semi-bold">Winter Collection</h1>
@@ -84,12 +85,14 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Trandy Products</span></h2>
     </div>
-    <div class="row px-xl-5 pb-3">
+    <div class="row px-xl-4 pb-3">
         @for (product of products.slice(0, 12); track product._id)
         {
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                <p class="position-absolute text-right text-success px-4 py-3" style="top: 0; right: 0; z-index: 1">
+                    {{product?.quantity}} Products</p>
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border  pt-5">
                     <img class="img-fluid w-100" [src]="product?.imageCover" [alt]="product?.title">
                 </div>
                 <div class="card-body border-left border-right text-center p-3 pt-4 pb-3">
@@ -134,7 +137,7 @@
 
 <!-- Subscribe Start -->
 <div class="container-fluid bg-secondary my-5">
-    <div class="row justify-content-md-center py-5 px-xl-5">
+    <div class="row justify-content-md-center py-5 px-xl-4">
         <div class="col-md-6 col-12 py-5">
             <div class="text-center mb-2 pb-2">
                 <h2 class="section-title px-5 mb-3"><span class="bg-secondary px-2">Stay Updated</span></h2>
@@ -160,12 +163,14 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
     </div>
-    <div class="row px-xl-5 pb-3">
+    <div class="row px-xl-4 pb-3">
         @for (product of products.slice(0, 12); track product._id)
         {
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                <p class="position-absolute text-right text-success px-4 py-3" style="top: 0; right: 0; z-index: 1">
+                    {{product?.quantity}} Products</p>
+                <div class="card-header product-img position-relative overflow-hidden bg-transparent border  pt-5">
                     <img class="img-fluid w-100" [src]="product?.imageCover" [alt]="product?.title">
                 </div>
                 <div class="card-body border-left border-right text-center p-3 pt-4 pb-3">
@@ -207,3 +212,21 @@
     </div>
 </section>
 <!-- Products End -->
+
+<!-- Vendor Start -->
+<section class="container-fluid py-5 ">
+    <div class="row px-xl-4">
+        <div class="col">
+            <owl-carousel-o [options]="vendorCarouselOptions">
+                @for (vendor of vendors; track vendor.id) {
+                <ng-template carouselSlide>
+                    <div class="vendor-item border p-4">
+                        <img [src]="vendor.image" [alt]="vendor.name">
+                    </div>
+                </ng-template>
+                }
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+<!-- Vendor End -->

@@ -11,6 +11,16 @@ export class SubCategoriesService {
   private _HttpClient = inject(HttpClient);
 
 
+
+  getAllSubCategories():Observable<any>{
+    return this._HttpClient.get('https://ecommerce.routemisr.com/api/v1/subcategories');
+  }
+
+
+  getSpecificSubCategory(id:string):Observable<any>{
+    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/subcategories/${id}`);
+  }
+
   getAllSubCategoriesOnCategory(categoryId: string):Observable<any> {
    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/categories/${categoryId}/subcategories`);
   }

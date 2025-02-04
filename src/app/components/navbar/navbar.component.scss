@@ -1,8 +1,23 @@
 .navbar-vertical {
-    display: none;
-  }
+  position: absolute;
+  top: 100%; // Position right below the trigger button
+  left: 0;
+
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  z-index: 1000; // Ensure it's above other content
   
-  .navbar-vertical.show {
-    display: block;
-  }
+  // Preserve existing styles
+  border: 1px solid #dee2e6;
+  border-top: none;
+  background-color: white;
+}
+
+.navbar-vertical.show {
+  max-height: 500px; // Adjust based on content
+  opacity: 1;
+  border-bottom: 1px solid #dee2e6;
+}
 

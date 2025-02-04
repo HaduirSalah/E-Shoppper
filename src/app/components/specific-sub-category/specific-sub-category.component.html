@@ -1,0 +1,30 @@
+<!-- Sub Categories Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-4 pb-3">
+        <div class="col-md-6">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 d-flex">
+                    <span>
+                        <h6 class="h5">Category: </h6>
+                    </span>
+                    <span class="ml-2">{{specificSubCategory?.name}}</span>
+                </li>
+                <li class="list-group-item px-0 d-flex">
+                    <span>
+                        <h6 class="h5">Updated At:</h6>
+                    </span>
+                    <span class="ml-2">{{specificSubCategory?.updatedAt | date:'medium'}}</span>
+                </li>
+              
+                <li class="list-group-item px-0 d-flex">
+                    <span>
+                        <h6 class="h5">CreatedAt:</h6>
+                    </span>
+                    <span class="ml-2">{{specificSubCategory?.createdAt | date:'medium'}}</span>
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+</div>
+<!-- Sub Categories End -->

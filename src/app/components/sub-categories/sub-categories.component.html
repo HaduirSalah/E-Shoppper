@@ -1,0 +1,32 @@
+<!-- Sub Categories Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-4 pb-3">
+        <div class="col-12">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                @for (subCategory of subCategories; track subCategory._id) {
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{subCategory?.name}}</h5>
+                            <div class="card-text">
+                                <p class="m-0"><strong>Created At:</strong> {{subCategory?.createdAt | date:'medium'}}
+                                </p>
+                                <p class="m-0"><strong>Updated At:</strong> {{subCategory?.updatedAt | date:'medium'}}
+                                </p>
+                            </div>
+                            <div class="mt-3">
+                                <a [routerLink]="['/subcategories',subCategory?._id]"
+                                    class="btn btn-primary btn-sm">View Detail</a>
+                                <a [routerLink]="['/categories',subCategory?.category]"
+                                    class="btn btn-secondary btn-sm">View Category</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sub Categories End -->

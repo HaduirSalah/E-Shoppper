@@ -1,6 +1,6 @@
 <!-- Navbar Start -->
 <div class="row align-items-center py-3 px-xl-5">
-  <div class="col-lg-3 d-none d-lg-block">
+  <div class="col-lg-3 d-none d-lg-block position-relative">
     <a href="" class="text-decoration-none">
       <h1 class="m-0 display-5 font-weight-semi-bold"><span
           class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
@@ -31,66 +31,75 @@
 </div>
 
 
-<div class=" mb-3">
-  <div class="row border-top px-xl-5">
-    <div class="col-lg-3 d-none d-lg-block">
-      <!-- الزر للتحكم -->
-      <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
-        (click)="toggleNavbar()" style="height: 65px; margin-top: -1px; padding: 0 30px">
-        <h6 class="m-0">Categories</h6>
-        <i class="fa" [ngClass]="isNavbarOpen ? 'fa-angle-up' : 'fa-angle-down'"></i>
-      </a>
+<div class="row border-top px-xl-5">
+  <div class="col-lg-3 d-none d-lg-block">
+    <!-- الزر للتحكم -->
+    <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-dark w-100"
+      (click)="toggleNavbar()" style="height: 65px; margin-top: -1px; padding: 0 30px">
+      <h6 class="m-0 h5">Categories</h6>
+      <i class="fa" [ngClass]="isNavbarOpen ? 'fa-angle-up' : 'fa-angle-down'"></i>
+    </a>
 
-      <!-- القائمة -->
-      <nav class="navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
-        [ngClass]="{ show: isNavbarOpen }">
-        <div class="navbar-nav w-100">
-          @for (category of categories$ | async; track category?._id) {
-          <div>
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link" data-toggle="dropdown">{{ category?.slug }} <i
-                  class="fa fa-angle-down float-right mt-1"></i></a>
-                  <!-- @for (subCategory of category?.subCategories; track $index) {} -->
-              <!-- <div class="dropdown-menu position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
-                <a href="" class="dropdown-item">Men's Dresses</a>
+    <!-- القائمة -->
+    <nav class="navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0 w-100"
+      id="navbar-vertical" [ngClass]="{ show: isNavbarOpen }">
+      <div class="navbar-nav w-100">
+        @for (category of categories$ | async; track category._id) {
+        <div class="nav-item dropdown">
+          <a class="nav-link d-flex justify-content-between align-items-center" 
+             data-toggle="dropdown" 
+             (click)="getAllSubCategoriesOnCategory(category._id)"
+             [attr.aria-expanded]="isActiveCategorySubcategories(category._id)">
+            {{ category.name }}
+            @if (hasSubCategories(category._id)) {
+            <i class="fa fa-angle-right"></i>
+            }
+          </a>
 
-             
-              </div> -->
-            </div>
+          @if (isActiveCategorySubcategories(category._id)) {
+          <div class="dropdown-menu show position-absolute bg-secondary border-0 rounded-0 w-100 m-0">
+            @for (subCategory of subCategories; track subCategory._id) {
+            <a [routerLink]="['/category', subCategory.slug]" class="dropdown-item">
+              {{ subCategory.name }}
+            </a>
+            }
           </div>
+          }
+        </div>
         }
-          <!-- باقي العناصر -->
+      </div>
+    </nav>
+  </div>
+  <div class="col-lg-9">
+    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+      <a href="" class="text-decoration-none d-block d-lg-none">
+        <h1 class="m-0 display-5 font-weight-semi-bold">
+          <span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper
+        </h1>
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav mr-auto py-0">
+          <a routerLink="home" routerLinkActive="active" class="nav-item nav-link active">Home</a>
+          <a routerLink="products" routerLinkActive="active" class="nav-item nav-link">Products</a>
+          <a routerLink="brands" routerLinkActive="active" class="nav-item nav-link">Brands</a>
+          <a routerLink="contactus" routerLinkActive="active" class="nav-item nav-link">Contact</a>
         </div>
-      
-      </nav>
-    </div>
-    <div class="col-lg-9">
-      <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-        <a href="" class="text-decoration-none d-block d-lg-none">
-          <h1 class="m-0 display-5 font-weight-semi-bold">
-            <span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper
-          </h1>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-          <div class="navbar-nav mr-auto py-0">
-            <a routerLink="home" routerLinkActive="active" class="nav-item nav-link active">Home</a>
-            <a routerLink="products" routerLinkActive="active" class="nav-item nav-link">Products</a>
-            <a routerLink="brands" routerLinkActive="active" class="nav-item nav-link">Brands</a>
-            <a routerLink="contact" routerLinkActive="active" class="nav-item nav-link">Contact</a>
-          </div>
-          <div class="navbar-nav ml-auto py-0">
-            <a routerLink="login" routerLinkActive="active" class="nav-item nav-link">Login</a>
-            <a routerLink="register" routerLinkActive="active" class="nav-item nav-link">Register</a>
-          </div>
+        <div class="navbar-nav ml-auto py-0">
+          <a routerLink="login" routerLinkActive="active" class="nav-item nav-link">Login</a>
+          <a routerLink="register" routerLinkActive="active" class="nav-item nav-link">Register</a>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </div>
 </div>
 
 <!-- Navbar End -->
 
-<a #backToTop class="btn btn-primary back-to-top" style="display: none;" id="back-to-top" (click)="onClick($event)"><i class="fa fa-angle-double-up"></i></a>
+
+
+
+<a #backToTop class="btn btn-primary back-to-top" style="display: none;" id="back-to-top" (click)="onClick($event)"><i
+    class="fa fa-angle-double-up"></i></a>

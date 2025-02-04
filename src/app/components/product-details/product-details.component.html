@@ -8,7 +8,7 @@
             <p class="m-0">Shop Detail</p>
         </div>
     </div>
-    
+
 </div>
 <!-- Page Header End -->
 
@@ -16,7 +16,7 @@
 <!-- Shop Detail Start -->
 <div class="container-fluid py-5">
 
-    <div class="row px-xl-5">
+    <div class="row px-xl-4">
         <div class="col-lg-5 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div id="product-carousel" class="carousel slide">
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    <div class="row px-xl-5">
+    <div class="row px-xl-4">
         <div class="col">
             <div class="nav nav-tabs justify-content-center border-secondary mb-4">
                 <a class="nav-item nav-link active" data-bs-toggle="tab" href="#tab-pane-1">Description</a>
@@ -116,34 +116,70 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5">Category: </h6>
+                                    </span>
+                                    <span class="ml-2">{{specificProduct?.category?.name}}</span>
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5">Brand: </h6>
+                                    </span>
+                                    <span class="ml-2">{{specificProduct?.brand?.name}}</span>
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5">Price: </h6>
+                                    </span>
+                                    @if (specificProduct?.priceAfterDiscount) {
+                                    <span class="ml-2"> <del class="text-muted">${{specificProduct?.price}}</del>
+                                        ${{specificProduct?.priceAfterDiscount}}</span>
+                                    } @else {
+                                    <span class="ml-2">${{specificProduct?.price}}</span>
+                                    }
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5">CreatedAt:</h6>
+                                    </span>
+                                    <span class="ml-2">{{specificProduct?.createdAt | date:'medium'}}</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
+                                <li class="list-group-item px-0 d-flex">
+                                    @for (subCategory of specificProduct?.subcategory; track $index) {
+
+                                    <span>
+                                        <h6 class="h5">Sub Category:</h6>
+                                    </span>
+                                    <span class="ml-2">{{subCategory?.name}}</span>
+                                    }
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
+
+                                <li class="list-group-item px-0 d-flex">
+                                    <h6 class="h5">Sold:</h6>
+                                    <span class="ml-2">{{specificProduct?.sold}}</span>
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
+                                
+
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5">Quantity: </h6>
+                                    </span>
+                                    <span class="ml-2">{{specificProduct?.quantity}}</span>
+
                                 </li>
-                                <li class="list-group-item px-0">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
+                                <li class="list-group-item px-0 d-flex">
+                                    <span>
+                                        <h6 class="h5 my-0">Updated At: </h6>
+                                    </span>
+                                    <span class="ml-2">{{specificProduct?.updatedAt | date:'medium'}}</span>
+
                                 </li>
+
                             </ul>
                         </div>
                     </div>
@@ -217,7 +253,7 @@
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
     </div>
-    <div class="row px-xl-5">
+    <div class="row px-xl-4">
         <div class="col">
             <div class="owl-carousel related-carousel">
                 <div class="card product-item border-0">
@@ -300,7 +336,3 @@
     </div>
 </div> -->
 <!-- Products End -->
-
-
-
-

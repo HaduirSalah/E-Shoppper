@@ -21,7 +21,6 @@ export class RegisterComponent {
   isLoading: boolean = false;
   msgSuccess:boolean = false;
 
-
   registerForm:FormGroup=this._FormBuilder.group({
     name:[null,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     email:[null,[Validators.required, Validators.email]],

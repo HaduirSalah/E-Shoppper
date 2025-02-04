@@ -2,11 +2,12 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { ProductService } from '../../core/services/product.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink,RouterLinkActive,CommonModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })

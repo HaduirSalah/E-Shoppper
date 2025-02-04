@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, ObservableInput } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,10 @@ export class CategoryService {
         // console.error(err);
       }
     });
+  }
+
+
+  getSpecificCategory(categoryId:string):Observable<any>{
+    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/categories/${categoryId}`);
   }
 }
