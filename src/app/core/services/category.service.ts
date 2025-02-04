@@ -1,24 +1,26 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-
+  private _HttpClient=inject(HttpClient);
   private categoriesSubject = new BehaviorSubject<any[]>([]);
   categories$ = this.categoriesSubject.asObservable(); // ملاحظة: $ تعني أن هذه بيانات قابلة للمراقبة (Observable)
 
-  constructor(private http: HttpClient) {}
+  constructor() {
+    this.getAllCategories();
+   }
 
   getAllCategories() {
-    this.http.get<{ data: any[] }>('https://ecommerce.routemisr.com/api/v1/categories').subscribe({
+    this._HttpClient.get<{ data: any[] }>('https://ecommerce.routemisr.com/api/v1/categories').subscribe({
       next: (res) => {
         this.categoriesSubject.next(res.data); // تحديث البيانات في BehaviorSubject
       },
       error: (err) => {
-        console.error(err);
+        // console.error(err);
       }
     });
   }

@@ -1,4 +1,7 @@
 @if (!msgError && !msgSuccess) {
+  <div class="px-xl-5">
+   
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="shadow-lg p-4 rounded-4">
     <h1 class="h2 text-main">Register Now:</h1>
     <div class="my-2">
@@ -166,7 +169,8 @@
 
     <!-- ms-auto -> block or inline-block not inline -->
 </form>
-} 
+</div>
+}   
 @else if(msgError) {
 <p class="alert alert-danger m-0">
     {{ msgError }}

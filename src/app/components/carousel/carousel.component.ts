@@ -1,14 +1,15 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CarouselModule, CarouselComponent as OwlCarousel } from 'ngx-owl-carousel-o';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+// import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-carousel',
-  imports: [CarouselModule],
+  imports: [CarouselModule,NgClass],
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements AfterViewInit {
+export class CarouselComponent implements OnInit {
   @ViewChild('carousel') carousel!: ElementRef;
   currentSlide = 0;
 
@@ -27,8 +28,8 @@ export class CarouselComponent implements AfterViewInit {
     }
   ];
 
-  ngAfterViewInit() {
-    // Initial setup if needed
+  ngOnInit() {
+    this.autoSlide();
   }
 
   prev() {
@@ -48,6 +49,13 @@ export class CarouselComponent implements AfterViewInit {
     slides.forEach((slide: HTMLElement, index: number) => {
       slide.classList.toggle('active', index === this.currentSlide);
     });
+  }
+
+  private autoSlide() {
+    setInterval(() => {
+      this.currentSlide = (this.currentSlide < this.slides.length - 1) ? this.currentSlide + 1 : 0;
+      this.updateCarousel();
+    }, 5000); // Adjust interval time as needed
   }
   // @ViewChild('owlCarousel') carousel!: OwlCarousel;
   

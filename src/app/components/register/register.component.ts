@@ -56,7 +56,7 @@ export class RegisterComponent {
   // service called form builder
 
   ngOnInit(): void {
-    console.log(this.registerForm);
+    // console.log(this.registerForm);
   }
 
   onSubmit(): void {
@@ -64,7 +64,7 @@ export class RegisterComponent {
       this.isLoading = true;
       this._AuthService.setRegisterform(this.registerForm.value).subscribe({
         next: (res) => {
-          console.log(res);
+          // console.log(res);
           this.isLoading = false;
         if(res.message==="success")
         {
@@ -77,10 +77,10 @@ export class RegisterComponent {
         error: (err: HttpErrorResponse) => {
           this.msgError = err.error.message;
           this.isLoading = false;
-          console.log(err);
+          // console.log(err);
         }
       })
-      console.log(this.registerForm);
+      // console.log(this.registerForm);
     }
     // else
     else if (this.registerForm.invalid)
